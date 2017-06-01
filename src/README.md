@@ -10,5 +10,8 @@
 ## lombok安装
     * setting--->plugins--->搜索lombok，安装重启
     
+    启用lombok：
+    setting--->annotation processors 勾选 enable annotation processing
+    
 ## 消除spring警告
     setting--->Inspections--->spring--->Severity--->Warning

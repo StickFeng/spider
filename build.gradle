@@ -1,0 +1,56 @@
+
+buildscript {
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.4.17"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.2.1"
+    }
+}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'analysis'
+    version = '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    /**spring**/
+    compile('org.springframework:spring-context-support:4.3.8.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-validation')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.jolokia:jolokia-core')
+    compile('org.springframework.retry:spring-retry')
+
+    /**htmlunit**/
+    compile('net.sourceforge.htmlunit:htmlunit:2.26')
+
+    /**commons**/
+    compile('commons-io:commons-io:2.3')
+
+    /**lombok*/
+    compile 'org.projectlombok:lombok:1.16.6'
+
+    /**JSR**/
+    compile('javax.annotation:jsr250-api:1.0')
+
+    /**quartz**/
+    compile 'org.quartz-scheduler:quartz:2.2.1'
+}
